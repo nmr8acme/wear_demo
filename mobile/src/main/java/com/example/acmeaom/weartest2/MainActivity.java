@@ -24,7 +24,6 @@ import java.util.List;
 
 public class MainActivity extends Activity {
     private Handler uiThread = new Handler(Looper.getMainLooper());
-    //private Handler bgThread = new Handler(new Looper());
     private GoogleApiClient googleApiClient;
     private boolean connected;
 

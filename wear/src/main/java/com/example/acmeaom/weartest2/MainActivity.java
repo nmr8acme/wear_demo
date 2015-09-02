@@ -79,13 +79,12 @@ public class MainActivity extends WearableActivity {
             };
 
     private MessageApi.MessageListener messageListener = new MessageApi.MessageListener() {
-        @Override public void onMessageReceived(MessageEvent messageEvent) {
-            long token = Binder.clearCallingIdentity();
-            try {
-                debugToast("message listener received: " + new String(messageEvent.getData()));
-            } finally {
-                Binder.restoreCallingIdentity(token);
-            }
+        @Override public void onMessageReceived(final MessageEvent messageEvent) {
+            runOnUiThread(new Runnable() {
+                @Override public void run() {
+                    debugToast("message listener received: " + new String(messageEvent.getData()));
+                }
+            });
         }
     };
 
